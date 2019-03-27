@@ -20,7 +20,7 @@ void main()
         printf("\n  Burst :");
         scanf("%f",&bt[i]);
         p[i]=i+1;        
-        tbt=tbt+bt[i];
+     
         
     
     }
@@ -54,7 +54,14 @@ void main()
         at[pos]=temp;
         
     }
-     
+     tbt=at[0];
+    
+    for(i=0;i<n;i++)
+    {
+    	tbt=tbt+bt[i];
+    	if(at[i+1]>tbt)
+    	tbt=at[i+1];	
+		}
   
     for(i=0;i<tbt;i++)
     {
