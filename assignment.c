@@ -5,6 +5,44 @@ void main()
     int p[20],wt[20],at[20],atp,tp,d,i,j,k,l,m,n,tn,pos,tbt=0;
     float pr[20],bt[20],temp,awt=0,atat=0;
 	
+	
+	void swap(pos,l)
+	
+	
+    {
+    	temp=pr[l];
+        pr[l]=pr[pos];
+        pr[pos]=temp;
+        
+        temp=bt[l];
+        bt[l]=bt[pos];
+        bt[pos]=temp;
+ 
+        temp=p[l];
+        p[l]=p[pos];
+        p[pos]=temp;
+        
+        temp=wt[l];
+        wt[l]=wt[pos];
+        wt[pos]=temp;
+        
+        temp=at[l];
+        at[l]=at[pos];
+        at[pos]=temp;
+	}
+	
+	void delarray()
+	{
+		for(d=0;d<n-1;d++)
+    	{
+    		p[d]=p[d+1];
+    		wt[d]=wt[d+1];
+    		pr[d]=pr[d+1];
+    		bt[d]=bt[d+1];
+    		at[d]=at[d+1];
+		}
+	}
+	
     printf("Enter number of process:");
     scanf("%d",&n);
     if(n<=0)
@@ -24,6 +62,7 @@ void main()
         
     
     }
+	
     
     for(l=0;l<n;l++)
     {
@@ -33,26 +72,8 @@ void main()
             if(at[m]<at[pos])
                 pos=m;
         }
-        temp=pr[l];
-        pr[l]=pr[pos];
-        pr[pos]=temp;
-        
-        temp=bt[l];
-        bt[l]=bt[pos];
-        bt[pos]=temp;
- 
-        temp=p[l];
-        p[l]=p[pos];
-        p[pos]=temp;
-        
-        temp=wt[l];
-        wt[l]=wt[pos];
-        wt[pos]=temp;
-        
-        temp=at[l];
-        at[l]=at[pos];
-        at[pos]=temp;
-        
+        swap(pos,l);
+       
     }
      tbt=at[0];
     
@@ -88,25 +109,7 @@ void main()
                 pos=m;
         }
         
-        temp=pr[l];
-        pr[l]=pr[pos];
-        pr[pos]=temp;
-        
-        temp=bt[l];
-        bt[l]=bt[pos];
-        bt[pos]=temp;
- 
-        temp=p[l];
-        p[l]=p[pos];
-        p[pos]=temp;
-        
-        temp=wt[l];
-        wt[l]=wt[pos];
-        wt[pos]=temp;
-        
-        temp=at[l];
-        at[l]=at[pos];
-        at[pos]=temp;
+        swap(pos,l);
         }
     
     
@@ -117,16 +120,8 @@ void main()
     	int tat1=wt[0]+bt[0];
     	g=i+bt[0];
     	tp=p[0];
-    	for(d=0;d<n-1;d++)
-    	{
-    		p[d]=p[d+1];
-    		wt[d]=wt[d+1];
-    		pr[d]=pr[d+1];
-    		bt[d]=bt[d+1];
-    		at[d]=at[d+1];
-		}
-		n=n-1;
-    	
+	delarray();
+	n=n-1;
     	if(tp!=atp){
 		printf("Process p%d waiting time: %d turn around time: %d \n",tp,wt1,tat1);
 		awt=awt+wt1;
