@@ -3,13 +3,20 @@ int g;   //Global Variable g
 void main()
 {     
      printf("_-_-_-_-_-_-_-_-_-_-_-_-___PRIORITY BASED SCHEDULING ALGORITHM___-_-_-_-_-_-_-_-_-_-_-_-_\n\n");
- int n;
+ 	int n;
+	char c;
 	do{
     printf("Enter number of process:");
-    scanf("%d",&n);     //Total number of process
-    if(n<=0)
+    while(scanf("%d",&n)!=1){     //Total number of process
+	c=getchar();
     printf("\t\tINVALID ENTRY ! Please try again\n\n");
-	}while(n<=0);
+    while ( getchar() !='\n');
+    printf("Enter number of process:");
+}
+if(n<=0)
+printf("\t\tINVALID ENTRY ! Please try again\n\n");
+}while(n<=0);
+	
 	
     int p[n],wt[n],at[n],atp,tp,d,i,j,k,l,m,tn,pos,tbt=0;
     float pr[n],bt[n],temp,awt=0,atat=0;  
@@ -60,25 +67,34 @@ void main()
 	
     tn=n;
     
-    printf("\nEnter Arrival and Burst time :\n");
+    printf("\nEnter Arrival and Burst time :\n\n");
     for(i=0;i<n;i++)   //taking input from the user in bt[] and at[] array
     {
-    	
-		do{
     	printf("For p%d\n",i+1);
+		do{
         printf("  Arrival :");
-        scanf("%d",&at[i]);
+        while(scanf("%d",&at[i])!=1){     
+		c=getchar();
+    	printf("\tInvalid Arrival time please enter again\n");
+    	while ( getchar() !='\n');
+    	printf("  Arrival :");
+		}
         if(at[i]<0)   //arrival time can not be less than zero
         printf("\tInvalid Arrival time please enter again\n");
         }while(at[i]<0);
         do{
+        	
         printf("  Burst :");
-        scanf("%f",&bt[i]);
-        p[i]=i+1;        
-        tbt=tbt+bt[i];
+        while(scanf("%f",&bt[i])!=1){     
+		c=getchar();
+    	printf("\tInvalid burst time please enter again\n");
+    	while ( getchar() !='\n');
+    	 printf("  Burst :");
+		}
         if(bt[i]<=0) //burst time can not be less than or equal to zero
         printf("\tInvalid burst time please enter again\n");
     }while(bt[i]<=0);
+    p[i]=i+1;
     }
     printf("\n\n_-_-_-_-_-_-_-_-_-_-_-_-___SOLUTION___-_-_-_-_-_-_-_-_-_-_-_-\n\n");
     
